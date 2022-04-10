@@ -1,0 +1,20 @@
+{% extends "index.html" %}
+
+{% block login_screen %}
+    <div class="cpassword-box">
+        <b style="font-size: 24px; margin-left: 180px;">Cinema XYZ</b><br>
+        <b style="font-size: 24px; margin-left: 160px;">Change Password</b>
+        {% if warning is true %}
+            <p style='color:red; margin-left:140px;'>Password yang dimasukkan salah</p>
+        {% endif %}
+        <form action="/change/" method='POST' class=cpassword-info>
+            <label for="fusername" style="margin-right: 55px;">Username: </label>
+            <input type="text" name="nusername" id="nusername" value="{{user['username']}}"><br><br>
+            <label for="fcpassword">Current Password: </label>
+            <input type="password" name="cpassword" id="cpassword"><br><br>
+            <label for="fmpassword" style="margin-right: 25px;">New Password: </label>
+            <input type="password" name="npassword" id="npassword"><br><br><br>
+            <input type="submit" value="Change" style="margin-left: 85px; width: 100px;"><br>
+        </form>
+    </div>
+{% endblock %}

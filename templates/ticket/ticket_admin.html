@@ -1,0 +1,36 @@
+{% extends "admin.html" %}
+
+{% block workspace %}
+<div class="workspace">
+    <h3>Welcome to Ticket Admin Page</h3>
+
+
+    <a href="/admin/tickets/generate/{{movId}}">Generate Tickets</a>
+    <a href="/admin/tickets/delete/{{movId}}">Delete Tickets</a>
+    <table class="ticket_edit">
+        <thead>
+            <th>ID</th>
+            <th>Kode Kursi</th>
+            <th>Kode Film</th>
+            <th>Schedule Film</th>
+            <th>Terbeli</th>
+            <th>Action</th>
+        </thead>
+       <tbody>
+        {% for item in tickets %}
+        <tr>
+            <td>{{item.id}}</td>
+            <td>{{item.seat}}</td>
+            <td>{{item.mov_id}}</td>
+            <td>{{item.schedule}}</td>
+            <td>{{item.bought}}</td>
+            <td>
+                <a href="/admin/tickets/edit/{{item.id}}">Edit</a>
+            </td>
+        </tr>
+        {% endfor %}
+       </tbody>
+    </table>
+
+</div>
+{% endblock %}

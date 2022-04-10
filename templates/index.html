@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cinema XYZ</title>
+        <link rel="stylesheet" href="/static/stylesheets/style.css">
+    </head>
+    <body>
+        <div class="header">
+            <h2 style="margin-left: 15px;">Cinema XYZ</h2>
+            <div class="login-menu">
+                {% if user is none %}
+                    <p>You are not logged in</p>
+                    <form action="/login" style="margin-left: 15px;"><input type="submit" value="Login"></form>
+                    <form action="/register" style="margin-left: 15px;"><input type="submit" value="Register"></form>
+                {% else %}
+                    <p>Hello {{user['username']}}!</p>
+                    <form action="/change" style="margin-left: 15px;"><input type="submit" value="Edit Account" style="color:black;"></form>
+                    <form action="/logout" style="margin-left: 15px;"><input type="submit" value="Logout" style="color:black;"></form>
+                {% endif %}
+            </div>
+        </div>
+        <div class="menu">
+            <div class="sub_menu">
+                <ul>
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/movies">Movies</a></li>
+                    <li><a href="/schedule">Schedule</a></li>
+                    {% if (user is not none) and (user['cat'] == 1) %}
+                        <li><a href="/admin">Admin</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+            <form action="/movies/search" class="search_bar" method="GET">
+                <label for="title" style="color:white; font-weight:700;">Judul Film:</label>
+                <input type="text" name="mov_title">
+                <input type="submit" value="Search">
+            </form>
+        </div>
+
+        {% block sub_menu_list %}
+        {% endblock %}
+
+        {% block homepage %}
+        {% endblock %}
+
+        {% block workspace %}
+        {% endblock %}
+
+        {% block movies_list %}
+        {% endblock %}
+        
+        {% block tickets_list %}
+        {% endblock %}
+
+        {% block order_screen %}
+        {% endblock %}
+
+        {% block login_screen %}
+        {% endblock %}
+  
+    </body>
+</html>

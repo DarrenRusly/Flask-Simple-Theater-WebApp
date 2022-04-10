@@ -1,0 +1,23 @@
+{% extends "index.html" %}
+
+{% block login_screen %}
+    <div class="login-box">
+        <b style="font-size: 24px; margin-left: 170px;">Cinema XYZ</b><br>
+        <b style="font-size: 24px; margin-left: 210px;">Login</b>
+        {% if warning is true %}
+            <p style="color:red; margin-left: 170px;">Username/password salah</p>
+        {% elif warning == -1 %}
+            <p style="color:red; margin-left: 140px;">Mohon untuk login terlebih dahulu</p>
+        {% endif %}
+        <form action="/login/" method='POST' class=login-info>
+            <label for="fusername"style="margin-right: 10px;">Username: </label>
+            <input type="text" name="username" id="username"><br><br>
+            <label for="fpassword" style="margin-right: 14px;">Password: </label>
+            <input type="password" name="pass" id="pass"><br><br><br>
+            <input type="submit" value="Login" style="margin-left: 100px; width: 100px;"><br>
+        </form>
+        <form action="/register">
+            <input type="submit" value="Register" style="margin-left: 200px; width: 100px;">
+        </form>
+    </div>
+{% endblock %}

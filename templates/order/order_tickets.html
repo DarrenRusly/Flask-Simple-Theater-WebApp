@@ -1,0 +1,58 @@
+{% extends "index.html" %}
+
+{% block order_screen %}
+<h2 style="text-align: center;">Pemesanan Tiket</h2>
+<h2 style="text-align: center;">{{movie.name}}</h2>
+<div class="order">
+    <div class="theater_box">
+        <p class="screen_box">SCREEN</p>
+        <table class="seat_box">
+           <tbody>
+            <tr>
+                <td>
+                    {% for item in tickets %}
+                        {% if item.bought == 0 %}
+                            {% if item.seat in selected_seats %}
+                                <a class=seat_icon_selected href="/ticket/remove/mov-id/{{item.id}}">{{item.seat}}</a>
+                            {% else %}
+                                <a class=seat_icon_unfilled href="/ticket/add/mov-id/{{item.id}}">{{item.seat}}</a>
+                            {% endif %}
+                        {% else %}
+                            <a class=seat_icon_filled>{{item.seat}}</a>
+                        {% endif %}
+                    {% endfor %}
+                </td>
+            </tr>
+           </tbody>
+        </table>
+        <div class="legend">
+            <div class='seat_icon_unfilled'></div>
+            <p style="margin:5px 30px 0px 0px; font-size:16px;">Kursi Tersedia</p>
+            <div class='seat_icon_filled'></div>
+            <p style="margin:5px 30px 0px 0px; font-size:16px;">Kursi Tidak Tersedia</p>
+        </div>
+        
+    </div>
+    <div class="order_details">
+        <div class="detail_box">
+            <b>Detail Pemesanan</b>
+                <ol class="items">
+                    {% for item in cart %}
+                        <li class="item">Kursi {{item['seat']}} - 25000</li>
+                    {% endfor %}
+                </ol>
+                
+        </div>
+        <p class="total_price">Total: {{cart|length * 25000}}</p>
+        <form action="/order/checkout/1">
+            <input class="checkout" type="submit" value="Check Out">
+        </form>
+        <form action="/order/checkout/0">
+            <input class="clear" type="submit" value="Clear">
+        </form>
+    </div>
+    
+</div>
+
+
+{% endblock %}

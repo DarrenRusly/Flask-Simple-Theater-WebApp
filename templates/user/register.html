@@ -1,0 +1,17 @@
+{% extends "index.html" %}
+
+{% block login_screen %}
+    <div class="register-box">
+        <b style="font-size: 24px; margin-left: 180px;">Cinema XYZ</b><br>
+        <b style="font-size: 24px; margin-left: 185px;">Registration</b>
+        {% if warning is true %}
+            <p style='color:red; margin-left:170px;'>Username tidak tersedia</p>
+        {% endif %}
+        <form action="/register/" method='POST' class=register-info>
+            <label for="fusername" style="margin-right: 10px;">Username: </label>
+            <input type="text" name="username" id="username"><br><br>
+            <label for="fpassword" style="margin-right: 14px;">Password: </label>
+            <input type="password" name="pass" id="pass"><br><br><br>
+            <input type="submit" value="Register" style="margin-left: 100px; width: 100px;"><br>
+        </form>
+{% endblock %}

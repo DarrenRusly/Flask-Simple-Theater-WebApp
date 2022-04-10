@@ -1,0 +1,16 @@
+{% extends "index.html" %}
+
+{% extends "movie.html %"}
+
+{% block tickets_list %}
+<div class="workspace">
+    <ul>
+        {% for item in tickets %}
+        <li>
+            <a href="/tickets/selected/{{item.id}}/{{item.seat}}/{{item.mov_id}}">{{item.seat}}</a>
+            
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

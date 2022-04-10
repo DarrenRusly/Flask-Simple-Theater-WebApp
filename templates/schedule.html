@@ -1,0 +1,17 @@
+{% extends "index.html" %}
+
+{% block movies_list %}
+<div class="schedules">
+    <ul class="first_row">
+        <li><a href="/movies/by/schedule/SENIN">SENIN</a></li>
+        <li><a href="/movies/by/schedule/SELASA">SELASA</a></li>
+        <li><a href="/movies/by/schedule/RABU">RABU</a></li>
+        <li><a href="/movies/by/schedule/KAMIS">KAMIS</a></li>
+    </ul>
+    <ul class="second_row">
+        <li><a href="/movies/by/schedule/JUMAT">JUMAT</a></li>
+        <li><a href="/movies/by/schedule/SABTU">SABTU</a></li>
+        <li><a href="/movies/by/schedule/MINGGU">MINGGU</a></li>
+    </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "admin.html" %}
+
+{% block workspace %}
+<div class="workspace">
+    <h3>Welcome to Movie Admin Page</h3>
+
+    <a href="/admin/movies/edit">New Movie</a>
+    <table class="movie_edit">
+        <thead>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Schedule</th>
+            <th>Action</th>
+        </thead>
+       <tbody>
+        {% for item in movies %}
+        <tr>
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.schedule}}</td>
+            <td>
+                <a href="/admin/movies/edit/{{item.id}}">Edit</a>
+                <a href="/admin/movies/delete/{{item.id}}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+       </tbody>
+    </table>
+
+</div>
+{% endblock %}

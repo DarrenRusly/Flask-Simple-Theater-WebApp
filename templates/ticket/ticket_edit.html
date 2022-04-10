@@ -1,0 +1,15 @@
+{% extends "/ticket/ticket_admin.html" %}
+
+{% block workspace %}
+<div class="workspace">
+    <h3>Form Administration - Ticket</h3>
+
+    <form action="/admin/tickets/edit/{{ticket.id}}" method="post">
+        <label for="name">Bought :</label>
+        <input type="text" name="bought" id="bought" value="{{ticket.bought}}"/>
+
+
+        <input type="submit" name="submit" id="">
+    </form>
+</div>
+{% endblock %}

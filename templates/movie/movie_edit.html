@@ -1,0 +1,17 @@
+{% extends "/movie/movie_admin.html" %}
+
+{% block workspace %}
+<div class="workspace">
+    <h3>Form Administration - Movie</h3>
+
+    <form action="/admin/movies/edit/{{movie.id}}" method="post">
+        <label for="name">Nama Film :</label>
+        <input type="text" name="name" id="name" value="{{movie.name}}"/>
+        <label for="name">Schedule :</label>
+        <input type="text" name="schedule" id="schedule" value="{{movie.schedule}}"/>
+
+
+        <input type="submit" name="submit" id="">
+    </form>
+</div>
+{% endblock %}

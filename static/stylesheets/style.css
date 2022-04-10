@@ -1,0 +1,310 @@
+* {
+    color:white;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+a {
+    color:yellow;
+    text-shadow: 0px 1.5px black;
+}
+
+p, td, th, h3 {
+    text-shadow: 0px 1.5px black;
+}
+input {
+    color:black;
+    height: 25px;
+}
+body {
+    background-color: #0c38ab;
+    margin: 0px;
+    height: 1000px;
+}
+.header {
+    height: 100px;
+    width: 100%;
+    font-size: 28px;
+    align-items: center;
+    display: flex;
+    background-color: #0d286e
+}
+
+.header .login-menu {
+    font-size: 18px;
+    margin: 40px 38px 0px auto;
+    display: flex;
+    align-items: center;
+}
+
+.login-box, .register-box, .cpassword-box {
+    padding: 20px;
+    width: 500px;
+    height: 300px;
+    border: 1px solid black;
+    background-color: #082896;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.login-box .login-info, .register-box .register-info, .cpassword-box .cpassword-info {
+    margin: 30px 20px 20px 100px;
+}
+
+.menu {
+    display: flex;
+    width: 100%;
+    background-color: black;
+    height: 50px;
+
+}
+
+.sub_menu {
+    margin-left: 400px;
+    width: 500px;
+    height: 40px;
+    padding: 5px;
+    display: flex;
+    list-style: none;
+}
+.sub_menu ul {
+    display: flex;
+    align-items: center;
+    margin: auto;
+}
+
+.admin-menu {
+    border: 1px solid black;
+    margin: 15px 0px 15px 0px;
+    background-color: #082896;
+}
+
+.menu .search_bar {
+    margin: 10px 0px 0px 70px;
+}
+
+li {
+    display: flex;
+    margin-right: 60px;
+    font-size: 20px;
+}
+
+th, td, tr {
+    width:150px;
+    height: 40px;
+
+}
+
+.promotions {
+    height: 400px;
+    width: 1000px;
+    margin-top: 50px;
+    display: flex;
+}
+
+.promotions img {
+    height: 360px;
+    width: 245px;
+    margin: 0px 12px 0px 12px;
+}
+.movies {
+    width: 50%;
+    height: 100%;
+    margin:20px 0px 0px 330px;
+    border: 1px solid black;
+    font-size: 20px;
+    text-align: center;
+    align-items: center;
+    background-color: #082896;
+
+}
+
+.movie_list {
+    margin:0px 0px 0px 70px;
+}
+.movie_list th{
+    width: 300px;
+}
+
+.schedules {
+    padding: 10px 0px 10px 0px;
+    width: 50%;
+    height: 100%;
+    margin:20px 0px 0px 320px;
+    text-align: center;
+    align-items: center;
+    border: 1px solid black;
+    background-color: #082896;
+}
+
+.schedules ul {
+    display: flex;
+}
+
+.schedules li {
+    height: 30px;
+    width: 100px;
+    margin-right: 20px;
+}
+.schedules ul li a{
+    margin: auto;
+    text-align: center;
+    align-items: center;
+}
+
+.schedules .first_row {
+    display: flex;
+    margin-left: 70px;
+
+}
+
+.schedules .second_row {
+    display: flex;
+    margin-left: 130px;
+
+}
+
+
+.workspace {
+    border: 1px solid black;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.workspace a {
+    color:yellow;
+}
+.workspace .movie_edit {
+    margin-left: 350px;
+}
+
+.workspace .ticket_edit {
+    margin-left: 350px;
+}
+
+.workspace .ticket_edit td, th {
+    width: 100px;
+}
+
+.workspace .ticket_movie_list{
+    margin-left: 200px;
+    width: 300px;
+}
+
+.order {
+    display: flex;
+}
+
+.theater_box {
+    width: 50%;
+    height: 500px;
+    margin:10px 0px 0px 330px;
+    font-size: 20px;
+    text-align: center;
+    align-items: center;
+    background-color: #1f52d1;
+    border: 1px solid black;
+
+}
+
+.theater_box .screen_box {
+    width: 350px;
+    margin-left: 155px;
+    text-align: center;
+    background-color: black;
+}
+
+.seat_box {
+    margin:180px 0px 0px 200px;
+}
+
+.seat_box td{
+    width: 300px;
+    display: flex;
+}
+
+.seat_box a {
+    text-shadow: none;
+}
+
+.seat_icon_unfilled {
+    height: 30px;
+    width: 35px;
+    border: 1px solid black;
+    background-color: lime;
+    margin-right: 20px;
+    color: black;
+    text-decoration: none;
+}
+
+.seat_icon_selected {
+    height: 30px;
+    width: 35px;
+    border: 1px solid black;
+    background-color: yellow;
+    margin-right: 20px;
+    color: black;
+    text-decoration: none;
+}
+
+.seat_icon_filled {
+    height: 30px;
+    width: 35px;
+    border: 1px solid black;
+    background-color: #ff1919;
+    margin-right: 20px;
+    color: black;
+    text-decoration: none;
+}
+
+.theater_box .legend {
+    display: flex;
+    margin: 160px 0px 0px 20px;
+}
+
+.order .order_details {
+    margin: 10px 0px 0px 20px;
+    height: 500px;
+    width: 200px;
+}
+
+.order .order_details .detail_box{
+    padding: 10px;
+    height: 350px;
+    width: 200px;
+    text-align: center;
+    background-color: #082896;
+    border: 1px solid black;
+}
+
+.order .order_details .checkout {
+    margin: 20px 0px 10px 50px;
+    padding: 5px;
+    height: 30px;
+    width: 100px;
+    background-color: lightgreen;
+    font-size: 15px;
+    color: black;
+    text-align: center;
+}
+
+.order .order_details .clear {
+    margin: 0px 0px 0px 50px;
+    padding: 5px;
+    height: 30px;
+    width: 100px;
+    background-color: #ff1919;
+    font-size: 15px;
+    color: black;
+    text-align: center;
+}
+
+.order .order_details .detail_box .items, .item{
+    margin: 20px 0px 0px 5px;
+    font-size: 16px;
+}
+
+.order .order_details .total_price {
+    margin: 20px 0px 0px 65px;
+    font-weight: 700;
+}

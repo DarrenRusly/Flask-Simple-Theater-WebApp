@@ -1,0 +1,20 @@
+{% extends "index.html" %}
+
+{% block movies_list %}
+<div class="movies">
+    <table class="movie_list">
+        <thead>
+            <th style="color:white;">Nama Film</th>
+            <th style="color: white;">Schedule</th>
+        </thead>
+       <tbody>
+        {% for item in movies %}
+        <tr>
+            <td><a href='/movies/order/{{item.id}}' style="color:yellow; text-decoration: none; font-weight: 700;;">{{item.name}}</a></td>
+            <td style="color:white; font-weight: 700;">{{item.schedule}}</td>
+        </tr>
+        {% endfor %}
+       </tbody>
+    </table>
+</div>
+{% endblock %}

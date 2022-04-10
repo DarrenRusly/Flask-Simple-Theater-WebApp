@@ -1,0 +1,21 @@
+{% extends "admin.html" %}
+
+{% block workspace %}
+<div class="workspace">
+    <h3>Welcome to Ticket Admin Page</h3>
+
+    <div class="movies">
+        <table class="ticket_movie_list">
+            <thead>
+                <th>Nama Film</th>
+            </thead>
+           <tbody>
+            {% for item in movies %}
+            <tr>
+                <td><a href="/admin/tickets/by/mov-id/{{item.id}}">{{item.name}}</a></td>
+            </tr>
+            {% endfor %}
+           </tbody>
+        </table>
+    </div>
+{% endblock %}
