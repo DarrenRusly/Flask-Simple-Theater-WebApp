@@ -7,8 +7,9 @@ class TicketDal:
 
     def create(self, mov):
         for x in range(5):
-            _SQL = f"INSERT INTO tickets(seat_code, movie_id, schedule, bought) values('{x+1}', {mov.id}, '{mov.schedule}', 0)"
+            _SQL = f"INSERT INTO tickets(movie_id, schedule, seat_code, bought) values({mov.id}, '{mov.schedule}', '{x+1}', 0)"
             _lastId = self.db.do_insert(_SQL)
+            print(x)
         self.reset_increment()
         self.db.close()
         return _lastId

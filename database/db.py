@@ -7,7 +7,7 @@ class DB:
             'host': 'localhost',
             'user': 'root',
             'password': '',
-            'database': 'cinema_xyz'
+            'database': 'cin_xyz'
         }
         self.conn = mysql.connector.connect(**dbconfig)
         self.cursor = self.conn.cursor()

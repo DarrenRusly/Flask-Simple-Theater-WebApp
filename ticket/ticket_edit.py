@@ -1,7 +1,7 @@
 
 class TicketEdit:
 
-    def __init__(self, id, seat, movId, sch, bought):
+    def __init__(self, id, movId, sch, seat, bought):
         self.id = id
         self.seat = seat
         self.mov_id = movId
