@@ -24,7 +24,7 @@ s3 = boto3.client(
 @app.route('/download-private', methods=['POST'])
 def download_private():
     filename = request.args.get("filename")
-    file = s3.get_object(Bucket=f'http://{S3_BUCKET_PRIVATE}.s3.amazonaws.com', Key={filename})
+    file = s3.get_object(Bucket=f's3://{S3_BUCKET_PRIVATE}.s3.amazonaws.com', Key={filename})
     return Response(
         file['Body'].read(),
         mimetype='text/plain',
@@ -74,7 +74,7 @@ def upload_file_to_s3(file, bucket_name, acl):
     """
     try:
         app.config['S3_BUCKET'] = bucket_name
-        app.config['S3_LOCATION'] = f'http://{bucket_name}.s3.amazonaws.com/img'
+        app.config['S3_LOCATION'] = f's3://{bucket_name}.s3.amazonaws.com/img'
         s3.upload_fileobj(
             file,
             bucket_name,
