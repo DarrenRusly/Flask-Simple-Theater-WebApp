@@ -68,14 +68,14 @@ def success_upload_private():
 
 
 def upload_file_to_s3(file, bucket_name, acl):
-    print(file.filename)
-    print(app.config['S3_LOCATION'])
     """
     Docs: http://boto3.readthedocs.io/en/latest/guide/s3.html
     """
     try:
         app.config['S3_BUCKET'] = bucket_name
         app.config['S3_LOCATION'] = f'http://{bucket_name}.s3.amazonaws.com'
+        print(file.filename)
+        print(app.config['S3_LOCATION'])
         s3.upload_fileobj(
             file,
             bucket_name,
