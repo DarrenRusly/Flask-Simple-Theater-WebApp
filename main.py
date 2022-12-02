@@ -69,7 +69,7 @@ def upload_file_to_s3(file, bucket_name, acl):
     """
     try:
         app.config['S3_BUCKET'] = bucket_name
-        app.config['S3_LOCATION'] = f'http://s3.amazonaws.com.{bucket_name}/img'
+        app.config['S3_LOCATION'] = f'http://{bucket_name}.s3.amazonaws.com/img'
         s3.upload_fileobj(
             file,
             bucket_name,
