@@ -32,17 +32,16 @@ def download_private():
         )
 
 @app.route('/upload-public', methods=['POST'])
-def success_upload_public():
+def success_upload_public(file):
     if request.method == 'POST':
-        f = request.files['file']
 
-        if f.filename == "":
+        if file.filename == "":
             return "Please select a file"
 
         # Uncomment to find your file is stored in disk
         # f.save(f.filename)
 
-        file_url = upload_file_to_s3(f, S3_BUCKET_PUBLIC, 'public-read')
+        file_url = upload_file_to_s3(file, S3_BUCKET_PUBLIC, 'public-read')
         # file_url = "None"
 
         return render_template(
