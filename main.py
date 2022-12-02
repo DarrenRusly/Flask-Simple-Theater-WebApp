@@ -14,15 +14,14 @@ S3_BUCKET_PRIVATE = "darren-aws-project-private-bucket"
 S3_KEY = "ASIA6Q2SL6JE6VB4YMWR"
 S3_SECRET = "UYVgW1yKb7BjV7RtJNQQY6AtJBuycZU5ZgB9M5UP"
 
-s3 = boto3.client(
-    "s3",
-    aws_access_key_id=S3_KEY,
-    aws_secret_access_key=S3_SECRET
-)
-
 @app.route('/download-private', methods=['POST'])
 def download_private():
     filename = request.args.get("filename")
+    s3 = boto3.client(
+    "s3",
+    aws_access_key_id=S3_KEY,
+    aws_secret_access_key=S3_SECRET
+    )
     file = s3.get_object(Bucket=f'{S3_BUCKET_PRIVATE}.s3.amazonaws.com', Key={filename})
     return Response(
         file['Body'].read(),
@@ -75,6 +74,11 @@ def upload_file_to_s3(file, bucket_name, acl):
     try:
         print(S3_KEY)
         print(S3_SECRET)
+        s3 = boto3.client(
+        "s3",
+        aws_access_key_id=S3_KEY,
+        aws_secret_access_key=S3_SECRET
+        )
         s3.upload_fileobj(
             file,
             S3_BUCKET,
