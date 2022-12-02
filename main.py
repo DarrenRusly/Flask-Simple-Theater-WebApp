@@ -21,7 +21,7 @@ s3 = boto3.client(
     # aws_session_token=app.config['S3_TOKEN']
 )
 
-@app.route('/download-private')
+@app.route('/download-private', methods=['POST'])
 def download_private():
     filename = request.args.get("filename")
     return send_file(f'https://{S3_BUCKET_PRIVATE}.s3.amazonaws.com/{filename}', as_attachment=True)
