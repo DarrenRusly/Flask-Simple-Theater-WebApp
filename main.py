@@ -17,8 +17,7 @@ S3_SECRET = "UYVgW1yKb7BjV7RtJNQQY6AtJBuycZU5ZgB9M5UP"
 s3 = boto3.client(
     "s3",
     aws_access_key_id=S3_KEY,
-    aws_secret_access_key=S3_SECRET,
-    # aws_session_token=app.config['S3_TOKEN']
+    aws_secret_access_key=S3_SECRET
 )
 
 @app.route('/download-private', methods=['POST'])
