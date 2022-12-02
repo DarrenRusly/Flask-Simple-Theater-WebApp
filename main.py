@@ -17,8 +17,7 @@ S3_SESSION = "FwoGZXIvYXdzEJr//////////wEaDAIYRQd6x9hiEA8LHiLPATMzvSv7VCFOc1AF45
 
 @app.route('/download-private', methods=['POST'])
 def download_private():
-    data = request.get_json()
-    filename = data['filename']
+    filename = request.form.get('filename')
     print(filename)
     s3 = boto3.client(
     "s3",
