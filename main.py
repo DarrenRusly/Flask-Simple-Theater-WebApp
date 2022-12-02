@@ -4,10 +4,88 @@ from movie.movie_edit import MovEdit
 from movie.movie_dal import MovDal
 from ticket.ticket_dal import TicketDal
 from user.user_dal import UserDal
+import boto3
 
 app = Flask(__name__)
 
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+S3_BUCKET_PUBLIC = "public.upload"
+S3_BUCKET_PRIVATE = "private.upload"
+app.config['S3_KEY'] = "AKIAX7KSC7IQ4IFHIT4B"
+app.config['S3_SECRET'] = "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"
+
+s3 = boto3.client(
+    "s3",
+    aws_access_key_id=app.config['S3_KEY'],
+    aws_secret_access_key=app.config['S3_SECRET'],
+    # aws_session_token=app.config['S3_TOKEN']
+)
+
+@app.route('/download-private')
+def index():
+    return render_template(
+        'home.html',
+        imgs_folder=f'https://s3.amazonaws.com.{S3_BUCKET_PRIVATE}/img'
+    )
+
+@app.route('/upload-public', methods=['POST'])
+def success_upload_public():
+    if request.method == 'POST':
+        f = request.files['file']
+
+        if f.filename == "":
+            return "Please select a file"
+
+        # Uncomment to find your file is stored in disk
+        # f.save(f.filename)
+
+        file_url = upload_file_to_s3(f, S3_BUCKET_PUBLIC, 'public-read')
+        # file_url = "None"
+
+        return render_template(
+            "home.html"
+        )
+
+@app.route('/upload-private', methods=['POST'])
+def success_upload_private():
+    if request.method == 'POST':
+        f = request.files['file']
+
+        if f.filename == "":
+            return "Please select a file"
+
+        # Uncomment to find your file is stored in disk
+        # f.save(f.filename)
+
+        file_url = upload_file_to_s3(f, S3_BUCKET_PRIVATE, 'private-read')
+        # file_url = "None"
+
+        return render_template(
+            "home.html"
+        )
+
+
+def upload_file_to_s3(file, bucket_name, acl):
+    """
+    Docs: http://boto3.readthedocs.io/en/latest/guide/s3.html
+    """
+    try:
+        app.config['S3_BUCKET'] = bucket_name
+        app.config['S3_LOCATION'] = f'http://s3.amazonaws.com.{bucket_name}/img'
+        s3.upload_fileobj(
+            file,
+            bucket_name,
+            file.filename,
+            ExtraArgs={
+                "ACL": acl,
+                "ContentType": file.content_type  # Set appropriate content type as per the file
+            }
+        )
+    except Exception as e:
+        print("Something Happened: ", e)
+        return e
+
+    return "{}{}".format(app.config["S3_LOCATION"], file.filename)
 
 
 @app.route('/')

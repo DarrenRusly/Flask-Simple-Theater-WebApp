@@ -4,10 +4,11 @@ class DB:
 
     def __init__(self):
         dbconfig = {
-            'host': '10.0.1.236',
+            'host': '10.0.1.146',
             'user': 'darren',
             'password': 'password',
-            'database': 'cin_xyz'
+            'database': 'cin_xyz',
+
         }
         self.conn = mysql.connector.connect(**dbconfig)
         self.cursor = self.conn.cursor()
