@@ -13,6 +13,7 @@ S3_BUCKET_PUBLIC = "darren-aws-project-public-bucket"
 S3_BUCKET_PRIVATE = "darren-aws-project-private-bucket"
 S3_KEY = "ASIA6Q2SL6JE6VB4YMWR"
 S3_SECRET = "UYVgW1yKb7BjV7RtJNQQY6AtJBuycZU5ZgB9M5UP"
+S3_SESSION = "FwoGZXIvYXdzEJr//////////wEaDAIYRQd6x9hiEA8LHiLPATMzvSv7VCFOc1AF45Ku8TNejH+rsrA+uM3h7cngM86PFoL5osEVTa99DdZuDtmyn9VckjVGjRzfHorPJInuct7EJzSghSu2OrhQWyATvwkXXgubNM3r76j+IWsbiFsZ+oYh8ezHQKzuLAyAKa0f2bmpFIyuK/56TSg73+C6nZzcGT6a2iWXcyd5JYL3PFjBs6RTfh35zeLlMvQbXr1lEM50HSIG3cx5XG/Bm8wVMb16I6qCJr0OBMoeCEg3vlVg+ZoickzBuKfkzs/OG9k3yijY9qacBjItJJxPTABT7C3TUxb0r6ak6Ft5QuHn1CFwMwng5/pcZXZIyt3OlMWG3dUi/XRn"
 
 @app.route('/download-private', methods=['POST'])
 def download_private():
@@ -20,7 +21,8 @@ def download_private():
     s3 = boto3.client(
     "s3",
     aws_access_key_id=S3_KEY,
-    aws_secret_access_key=S3_SECRET
+    aws_secret_access_key=S3_SECRET,
+    aws_session_token=S3_SESSION
     )
     file = s3.get_object(Bucket=f'{S3_BUCKET_PRIVATE}.s3.amazonaws.com', Key={filename})
     return Response(
@@ -77,7 +79,8 @@ def upload_file_to_s3(file, bucket_name, acl):
         s3 = boto3.client(
         "s3",
         aws_access_key_id=S3_KEY,
-        aws_secret_access_key=S3_SECRET
+        aws_secret_access_key=S3_SECRET,
+        aws_session_token=S3_SESSION
         )
         s3.upload_fileobj(
             file,
