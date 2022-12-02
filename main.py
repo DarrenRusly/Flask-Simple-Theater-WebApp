@@ -11,13 +11,13 @@ app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 S3_BUCKET_PUBLIC = "darren-aws-project-public-bucket"
 S3_BUCKET_PRIVATE = "darren-aws-project-private-bucket"
-app.config['S3_KEY'] = "ASIA6Q2SL6JE6VB4YMWR"
-app.config['S3_SECRET'] = "UYVgW1yKb7BjV7RtJNQQY6AtJBuycZU5ZgB9M5UP"
+S3_KEY = "ASIA6Q2SL6JE6VB4YMWR"
+S3_SECRET = "UYVgW1yKb7BjV7RtJNQQY6AtJBuycZU5ZgB9M5UP"
 
 s3 = boto3.client(
     "s3",
-    aws_access_key_id=app.config['S3_KEY'],
-    aws_secret_access_key=app.config['S3_SECRET'],
+    aws_access_key_id=S3_KEY,
+    aws_secret_access_key=S3_SECRET,
     # aws_session_token=app.config['S3_TOKEN']
 )
 
@@ -71,14 +71,14 @@ def upload_file_to_s3(file, bucket_name, acl):
     """
     Docs: http://boto3.readthedocs.io/en/latest/guide/s3.html
     """
+    S3_BUCKET = bucket_name
+    S3_LOCATION = f'http://{bucket_name}.s3.amazonaws.com'
     try:
-        app.config['S3_BUCKET'] = bucket_name
-        app.config['S3_LOCATION'] = f'http://{bucket_name}.s3.amazonaws.com'
         print(file.filename)
         print(app.config['S3_LOCATION'])
         s3.upload_fileobj(
             file,
-            bucket_name,
+            S3_BUCKET,
             file.filename,
             ExtraArgs={
                 "ACL": acl,
@@ -89,7 +89,7 @@ def upload_file_to_s3(file, bucket_name, acl):
         print("Something Happened: ", e)
         return e
 
-    return "{}{}".format(app.config["S3_LOCATION"], file.filename)
+    return "{}{}".format(S3_LOCATION, file.filename)
 
 
 @app.route('/')
