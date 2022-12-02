@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, session, url_for, send_file
+from flask import Flask, render_template, request, redirect, session, url_for, Response
 
 from movie.movie_edit import MovEdit
 from movie.movie_dal import MovDal
@@ -24,7 +24,12 @@ s3 = boto3.client(
 @app.route('/download-private', methods=['POST'])
 def download_private():
     filename = request.args.get("filename")
-    return send_file(f'https://{S3_BUCKET_PRIVATE}.s3.amazonaws.com/{filename}', as_attachment=True)
+    file = s3.get_object(Bucket=f'https://{S3_BUCKET_PRIVATE}.s3.amazonaws.com', Key={filename})
+    return Response(
+        file['Body'].read(),
+        mimetype='text/plain',
+        headers={'Content-Disposition': f'attachment; filename={filename}'}
+        )
 
 @app.route('/upload-public', methods=['POST'])
 def success_upload_public():
