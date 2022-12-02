@@ -74,6 +74,8 @@ def upload_file_to_s3(file, bucket_name, acl):
     S3_BUCKET = bucket_name
     S3_LOCATION = f'http://{bucket_name}.s3.amazonaws.com'
     try:
+        print(S3_KEY)
+        print(S3_SECRET)
         s3.upload_fileobj(
             file,
             S3_BUCKET,
