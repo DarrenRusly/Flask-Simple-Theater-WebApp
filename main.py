@@ -24,7 +24,7 @@ s3 = boto3.client(
 @app.route('/download-private', methods=['POST'])
 def download_private():
     filename = request.args.get("filename")
-    file = s3.get_object(Bucket=f'https://{S3_BUCKET_PRIVATE}.s3.amazonaws.com', Key={filename})
+    file = s3.get_object(Bucket=f'http://{S3_BUCKET_PRIVATE}.s3.amazonaws.com', Key={filename})
     return Response(
         file['Body'].read(),
         mimetype='text/plain',
