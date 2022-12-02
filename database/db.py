@@ -5,8 +5,8 @@ class DB:
     def __init__(self):
         dbconfig = {
             'host': '10.0.1.236',
-            'user': 'root',
-            'password': '',
+            'user': 'darren',
+            'password': 'password',
             'database': 'cin_xyz'
         }
         self.conn = mysql.connector.connect(**dbconfig)
