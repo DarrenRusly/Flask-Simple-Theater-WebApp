@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, session, url_for
+from flask import Flask, render_template, request, redirect, session, url_for, send_file
 
 from movie.movie_edit import MovEdit
 from movie.movie_dal import MovDal
@@ -9,10 +9,10 @@ import boto3
 app = Flask(__name__)
 
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
-S3_BUCKET_PUBLIC = "public.upload"
-S3_BUCKET_PRIVATE = "private.upload"
-app.config['S3_KEY'] = "AKIAX7KSC7IQ4IFHIT4B"
-app.config['S3_SECRET'] = "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"
+S3_BUCKET_PUBLIC = "darren-aws-project-public-bucket"
+S3_BUCKET_PRIVATE = "darren-aws-project-private-bucket"
+app.config['S3_KEY'] = "ASIA6Q2SL6JE6VB4YMWR"
+app.config['S3_SECRET'] = "UYVgW1yKb7BjV7RtJNQQY6AtJBuycZU5ZgB9M5UP"
 
 s3 = boto3.client(
     "s3",
@@ -22,11 +22,9 @@ s3 = boto3.client(
 )
 
 @app.route('/download-private')
-def index():
-    return render_template(
-        'home.html',
-        imgs_folder=f'https://s3.amazonaws.com.{S3_BUCKET_PRIVATE}/img'
-    )
+def download_private():
+    filename = request.args.get("filename")
+    return send_file(f'https://{S3_BUCKET_PRIVATE}.s3.amazonaws.com/{filename}', as_attachment=True)
 
 @app.route('/upload-public', methods=['POST'])
 def success_upload_public():
