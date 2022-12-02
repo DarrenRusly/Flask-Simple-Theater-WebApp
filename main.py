@@ -59,7 +59,7 @@ def success_upload_private():
         # Uncomment to find your file is stored in disk
         # f.save(f.filename)
 
-        file_url = upload_file_to_s3(f, S3_BUCKET_PRIVATE, 'public-read')
+        file_url = upload_file_to_s3(f, S3_BUCKET_PRIVATE, None)
         # file_url = "None"
 
         return render_template(
