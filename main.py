@@ -24,7 +24,7 @@ def download_private():
     aws_secret_access_key=S3_SECRET,
     aws_session_token=S3_SESSION
     )
-    file = s3.get_object(Bucket=f'{S3_BUCKET_PRIVATE}.s3.amazonaws.com', Key={filename})
+    file = s3.get_object(Bucket=f'{S3_BUCKET_PRIVATE}.s3.amazonaws.com', Key=f'{filename}')
     return Response(
         file['Body'].read(),
         mimetype='text/plain',
