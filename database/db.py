@@ -4,8 +4,8 @@ class DB:
 
     def __init__(self):
         dbconfig = {
-            'host': '10.0.1.146',
-            'user': 'darren',
+            'host': 'mysql-instance.cm4exc7wvupv.us-east-1.rds.amazonaws.com',
+            'user': 'admin',
             'password': 'password',
             'database': 'cin_xyz',
 
