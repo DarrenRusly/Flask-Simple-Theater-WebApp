@@ -32,9 +32,9 @@ def download_private():
         )
 
 @app.route('/upload-public', methods=['POST'])
-def success_upload_public(file):
+def success_upload_public():
     if request.method == 'POST':
-
+        file = request.files['file']
         if file.filename == "":
             return "Please select a file"
 
@@ -73,7 +73,7 @@ def upload_file_to_s3(file, bucket_name, acl):
     """
     try:
         app.config['S3_BUCKET'] = bucket_name
-        app.config['S3_LOCATION'] = f'{bucket_name}.s3.amazonaws.com/img'
+        app.config['S3_LOCATION'] = f'{bucket_name}.s3.amazonaws.com'
         s3.upload_fileobj(
             file,
             bucket_name,
