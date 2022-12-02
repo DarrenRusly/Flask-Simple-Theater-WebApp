@@ -41,7 +41,7 @@ def success_upload_public():
         # file_url = "None"
 
         return render_template(
-            "home.html"
+            "home.html", user=None
         )
 
 @app.route('/upload-private', methods=['POST'])
@@ -59,7 +59,7 @@ def success_upload_private():
         # file_url = "None"
 
         return render_template(
-            "home.html"
+            "home.html", user=None
         )
 
 
