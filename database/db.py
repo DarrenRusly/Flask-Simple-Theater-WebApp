@@ -4,7 +4,7 @@ class DB:
 
     def __init__(self):
         dbconfig = {
-            'host': 'ip-10-0-1-236.ec2.internal',
+            'host': '10.0.1.236',
             'user': 'root',
             'password': '',
             'database': 'cin_xyz'
